@@ -1,0 +1,40 @@
+<%- model_class = MagazinePage -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:page) %></th>
+      <th><%= model_class.human_attribute_name(:magazine _id) %></th>
+      <th><%= model_class.human_attribute_name(:page_layout _id) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @magazine_pages.each do |magazine_page| %>
+      <tr>
+        <td><%= link_to magazine_page.id, magazine_page_path(magazine_page) %></td>
+        <td><%= magazine_page.page %></td>
+        <td><%= magazine_page.magazine _id %></td>
+        <td><%= magazine_page.page_layout _id %></td>
+        <td><%=l magazine_page.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_magazine_page_path(magazine_page), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      magazine_page_path(magazine_page),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_magazine_page_path,
+            :class => 'btn btn-primary' %>

@@ -1,0 +1,16 @@
+<%= simple_form_for @magazine, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :title %>
+  <%= f.input :short_description %>
+  <%= f.input :long_description %>
+  <%= f.input :status, :collection => @valid_status %>
+  <%= f.input :price %>
+  <div class="form-actions">
+    <% unless @magazine.new_record? %>
+        <%= link_to t('.edit', :default => t("helpers.links.addpage")),
+                    new_magazine_page_path(:magazine_id => @magazine), :class => 'btn' %>
+    <% end %>
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                magazines_path, :class => 'btn' %>
+  </div>
+<% end %>

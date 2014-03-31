@@ -1,0 +1,27 @@
+<%- model_class = MagazinePageLayout -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @magazine_page_layout.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
+  <dd><%= @magazine_page_layout.description %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:preview_file) %>:</strong></dt>
+  <dd><%= @magazine_page_layout.preview_file %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:template_file) %>:</strong></dt>
+  <dd><%= @magazine_page_layout.template_file %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              magazine_page_layouts_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_magazine_page_layout_path(@magazine_page_layout), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              magazine_page_layout_path(@magazine_page_layout),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

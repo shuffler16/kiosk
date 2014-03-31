@@ -1,0 +1,12 @@
+<%= simple_form_for @article, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :magazine_page _id %>
+  <%= f.input :page_slot %>
+  <%= f.input :title %>
+  <%= f.input :content %>
+  <%= f.input :source %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                articles_path, :class => 'btn' %>
+  </div>
+<% end %>

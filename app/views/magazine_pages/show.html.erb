@@ -1,0 +1,25 @@
+<%- model_class = MagazinePage -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:page) %>:</strong></dt>
+  <dd><%= @magazine_page.page %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:magazine_id) %>:</strong></dt>
+  <dd><%= @magazine_page.magazine.title %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:page_layout_id) %>:</strong></dt>
+  <dd><%= @magazine_page.magazine_page_layout %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              magazine_pages_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_magazine_page_path(@magazine_page), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              magazine_page_path(@magazine_page),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

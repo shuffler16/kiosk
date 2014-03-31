@@ -1,0 +1,11 @@
+<%= simple_form_for @magazine_page_layout, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :preview_file %>
+  <%= f.input :template_file %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                magazine_page_layouts_path, :class => 'btn' %>
+  </div>
+<% end %>

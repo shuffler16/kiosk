@@ -1,0 +1,5 @@
+<%- model_class = MagazinePage -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => ['%{magazine}'], :magazine => @magazine.title %></h1>
+</div>
+<%= render :partial => 'form' %>
