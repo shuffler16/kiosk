@@ -16,7 +16,8 @@ class MagazinePagesController < ApplicationController
   # GET /magazine_pages/new
   def new
     @magazine_page = MagazinePage.new
-    @magazine_page.magazine = Magazine.find(params[:magazine_id])
+    @magazine = Magazine.find(params[:magazine_id])
+    @magazine_page.magazine = @magazine
   end
 
   # GET /magazine_pages/1/edit
@@ -65,16 +66,17 @@ class MagazinePagesController < ApplicationController
   end
 
   private
-    def set_magazine_page_layout
-      @magazine_page_layouts = MagazinePageLayout.all
-    end
-    # Use callbacks to share common setup or constraints between actions.
-    def set_magazine_page
-      @magazine_page = MagazinePage.find(params[:id])
-    end
+  def set_magazine_page_layout
+    @magazine_page_layouts = MagazinePageLayout.all
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def magazine_page_params
-      params.require(:magazine_page).permit(:page, :magazine_id, :page_layout_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_magazine_page
+    @magazine_page = MagazinePage.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def magazine_page_params
+    params.require(:magazine_page).permit(:page, :magazine_id, :page_layout_id)
+  end
 end

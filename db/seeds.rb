@@ -11,10 +11,10 @@ MagazinePageLayout.delete_all
 MagazinePageLayout.create!(
   name: %{Full page text},
   description: %{Full page text},
-  template_file: 'full-page-text'
+  template_file: 'full_page_text.html.erb'
 )
 MagazinePageLayout.create!(
     name: %{2-column Text},
     description: %{Two-column page text},
-    template_file: '2-col-page-text'
+    template_file: '2col_page_text.html.erb'
 )
